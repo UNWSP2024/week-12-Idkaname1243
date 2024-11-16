@@ -1,0 +1,28 @@
+import tkinter
+import tkinter.messagebox
+class Mygui:
+    def __init__(self):
+        self.mainwindow = tkinter.Tk()
+        self.top_frame=tkinter.Frame(self.mainwindow)
+        self.bottom_frame=tkinter.Frame(self.mainwindow)
+        self.mainwindow.title("Miles per Gallon calculator")
+        self.label=tkinter.Label(self.top_frame,text='Miles')
+        self.miles = tkinter.Entry(self.top_frame)
+        self.glabel=tkinter.Label(self.bottom_frame,text='Gallons')
+        self.gallons = tkinter.Entry(self.bottom_frame)
+        self.exitbutton = tkinter.Button(self.mainwindow, text='Exit',command=self.mainwindow.destroy)
+        self.okbutton = tkinter.Button(self.mainwindow,text='Ok',command=self.calculate)
+        self.label.pack(side='left')
+        self.miles.pack(side='right')
+        self.glabel.pack(side='left')
+        self.gallons.pack(side='right')
+        self.top_frame.pack()
+        self.bottom_frame.pack()
+        self.okbutton.pack()
+        self.exitbutton.pack()
+
+        tkinter.mainloop()
+    def calculate(self):
+        tkinter.messagebox.showinfo('MPG','you get '+str(round(int(self.miles.get())/int(self.gallons.get()),2))+' MPG')
+if __name__ == '__main__':
+    mygui = Mygui()
